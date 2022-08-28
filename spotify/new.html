@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>music player</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        .container {
+            display: flex;
+            margin: 10px 0 10px 20%;
+            height: 65vh;
+        }
+
+        .container h1 {
+            color: white;
+        }
+
+        .container2 {
+            display: flex;
+            margin: 0 0 10px 35%;
+
+        }
+
+        .bor {
+            border: 3px solid yellow;
+            border-radius: 5px;
+            width: 300px;
+            margin: auto;
+            background-color: black;
+            margin-top: 80px;
+        }
+
+        .range {
+            position: relative;
+            left: 20px;
+            width: 250px;
+        }
+
+        .icons {
+            color: aliceblue;
+        }
+
+        td {
+            color: aliceblue;
+        }
+
+        .bor td {
+            position: relative;
+            left: -20px;
+            color: #00FFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bor">
+        <div class="container">
+            <table>
+                <th>
+                    <h1>music player</h1>
+                </th>
+                <tr>
+                    <td>Smells Like Teen Spirit </td>
+                    <td><i class="x far fa- fa-play-circle" id="0"></i></td>
+                </tr>
+           
+                <tr>
+                    <td>Imagine</td>
+                    <td><i class="x far fa- fa-play-circle" id="1"></i></td>
+                </tr>
+                <tr>
+                    <td>Bohemian Rhapsody</td>
+                    <td><i class="x far fa- fa-play-circle" id="2"></i></td>
+                </tr>
+                <tr>
+                    <td>I Can't Get No Satisfaction</td>
+                    <td><i class="x far fa- fa-play-circle" id="3"></i></td>
+                </tr>
+                <tr>
+                    <td>Like A Rolling Stone</td>
+                    <td><i class="x far fa- fa-play-circle" id="4"></i></td>
+                </tr>
+                <tr>
+                    <td>Hey Jude </td>
+                    <td><i class="x far fa- fa-play-circle" id="5"></i></td>
+                </tr>
+                <tr>
+                    <td>I Will Always Love You</td>
+                    <td><i class="x far fa- fa-play-circle" id="6"></i></td>
+                </tr>
+                <tr>
+                    <td>Bridge Over Troubled Water</td>
+                    <td><i class="x far fa- fa-play-circle" id="7"></i></td>
+                </tr>
+                <tr>
+                    <td>Sultans Of Swing</td>
+                    <td><i class="x far fa- fa-play-circle" id="8"></i></td>
+                </tr>
+                <tr>
+                    <td>A Change Is Gonna Come</td>
+                    <td><i class="x far fa- fa-play-circle" id="9"></i></td>
+                </tr>
+                <tr>
+                    <td>God Only Knows </td>
+                    <td><i class="x far fa- fa-play-circle" id="10"></i></td>
+                </tr>
+            
+
+            </table>
+        </div>
+        <hr>
+        <div class="bottom">
+            <input type="range" class="range" id="myProgressBar" min="0" value="0" max="100">
+            <div class="container2">
+                <div class="icons">
+                    <i class="fas fa-2x fa-step-backward" id="previous"></i>
+                    <i class="far fa-2x fa-play-circle" id="masterPlay"></i>
+                    <i class="fas fa-2x fa-step-forward" id="next"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/26504e4a1f.js" crossorigin="anonymous"></script>
+
+    <script>
+        let songIndex = 0;
+        let audioElement = new Audio('songs/2.mp3');
+        let myProgressBar = document.getElementById('myProgressBar');
+        let masterPlay = document.getElementById('masterPlay');
+        let play = document.getElementsByClassName('x');
+        
+
+        masterPlay.addEventListener('click', () => {
+            if (audioElement.paused || audioElement.currentTime <= 0) {
+                audioElement.play();
+                masterPlay.classList.remove('fa-play-circle');
+                masterPlay.classList.add('fa-pause-circle');
+            }
+            else {
+                audioElement.pause();
+                masterPlay.classList.add('fa-play-circle');
+                masterPlay.classList.remove('fa-pause-circle');
+            }
+        })
+
+        audioElement.addEventListener('timeupdate', () => {
+            progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
+            myProgressBar.value = progress;
+        });
+
+        myProgressBar.addEventListener('change', () => {
+            audioElement.currentTime = myProgressBar.value * audioElement.duration / 100;
+        }) 
+        
+       for(let i=0;i<play.length;i++){
+        play[i].addEventListener('click', () => {
+            if (audioElement.paused || audioElement.currentTime <= 0) {
+                audioElement.play();
+                play[i].classList.remove('fa-play-circle');
+                play[i].classList.add('fa-pause-circle');
+            }
+            else {
+                audioElement.pause();
+                play[i].classList.add('fa-play-circle');
+                play[i].classList.remove('fa-pause-circle');
+            }
+        })
+       }
+    
+    </script>
+
+</body>
+
+</html>

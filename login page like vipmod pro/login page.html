@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+
+    <style>
+        .container{
+            position: relative;
+            left: 35%;
+            border: 1px solid red;
+            width: 400px;
+            height: 180px;
+            border-radius: 50px;
+            background-color: yellowgreen;
+        }
+        .username,.password{
+            position: relative;
+            left: 70px;
+            top: 30px;
+            color: black;
+            font-weight:300;
+        }
+        button{
+            position: relative;
+            left: 160px;
+            top: 20px;
+            width: 90px;
+            height: 30px;
+            border: 1px solid red;
+            background-color: aqua;
+            
+        }
+    </style>
+</head>
+<body>
+    <center><h1>login page</h1></center>
+    <div class="container">
+        <label for="username" class="username">username:</label>
+        <input type="text" class="username" id="uname">
+        <br><br>
+        <label for="username" class="password">password:</label>
+
+        <input type="password" class="password" id="pass">
+
+        <br><br><br>
+        <button onclick="login()">submit</button>
+    </div>
+
+    <script>
+        function login()
+        {
+        var username = document.getElementById('uname');
+        var password = document.getElementById('pass');
+
+        if(username.value == "sam" && password.value=="69")
+        {
+            location.assign('http://127.0.0.1:5500/login%20page%20like%20vipmod%20pro/success.html');
+        }
+        else{
+            window.alert('login failed');
+        }
+    }
+    </script>
+</body>
+</html>

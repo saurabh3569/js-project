@@ -1,0 +1,18 @@
+div{
+    position: relative;
+    text-align: center;
+    font-size: 50px;
+    color: red;
+}
+body
+{
+    background-color: yellowgreen;
+}
+img
+{
+    position: relative;
+    left: 25%;
+    padding: 40px;
+    height: 250px;
+    width: 250px;
+}
